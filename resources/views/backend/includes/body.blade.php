@@ -26,14 +26,14 @@
                  <i class='bx bxs-calendar-check'></i>
                  <span class="text">
                      <h3>1020</h3>
-                     <p>New Order</p>
+                     <p>Jumlah Komoditas</p>
                  </span>
              </li>
              <li>
                  <i class='bx bxs-group'></i>
                  <span class="text">
                      <h3>2834</h3>
-                     <p>Visitors</p>
+                     <p>Jumlah Request Server</p>
                  </span>
              </li>
              <li>

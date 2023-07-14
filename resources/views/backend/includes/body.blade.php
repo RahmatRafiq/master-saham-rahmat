@@ -1,4 +1,5 @@
  <section id="content">
+     @include('backend.includes.navbar')
      <!-- MAIN -->
      <main>
          <div class="head-title">

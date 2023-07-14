@@ -11,6 +11,7 @@
     <!-- SIDEBAR -->
 
     <!-- CONTENT -->
+
     @include('backend.includes.body')
     <!-- CONTENT -->
 

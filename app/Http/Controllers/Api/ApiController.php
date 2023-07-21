@@ -35,9 +35,9 @@ class ApiController extends Controller
         $companies = json_decode($companies_response->getBody(), true);
 
         return [
-            'companies' => $companies['data']['results'],
-            'top_losers' => $top_losers,
-            'top_gainers' => $top_gainers,
+            'top_gainers' => $top_gainers['data'],
+            'top_losers' => $top_losers['data'],
+            'companies' => $companies['data'],
         ];
 
     }

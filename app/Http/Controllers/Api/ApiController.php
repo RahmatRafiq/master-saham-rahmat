@@ -9,23 +9,36 @@ class ApiController extends Controller
 {
     public function index()
     {
-// Membuat Client Guzzle
         $client = new Client();
+        $companies_response = $client->get('https://api.goapi.id/v1/stock/idx/companies', [
+            'headers' => [
+                'accept' => 'application/json',
+                'X-API-KEY' => 'x9XNlAlZiYCFlPv8T5glLRgvkF71ln',
 
-// Melakukan request
-        $response = $client->get('https://api.goapi.id/v1/stock/idx/companies?api_key=x9XNlAlZiYCFlPv8T5glLRgvkF71ln', [
+            ],
+
+        ]);
+        $top_losers_response = $client->get('https://api.goapi.id/v1/stock/idx/top_loser', [
             'headers' => [
                 'accept' => 'application/json',
                 'X-API-KEY' => 'x9XNlAlZiYCFlPv8T5glLRgvkF71ln',
             ],
         ]);
+        $top_gainers_response = $client->get('https://api.goapi.id/v1/stock/idx/top_gainer', [
+            'headers' => [
+                'accept' => 'application/json',
+                'X-API-KEY' => 'x9XNlAlZiYCFlPv8T5glLRgvkF71ln',
+            ],
+        ]);
+        $top_gainers = json_decode($top_gainers_response->getBody(), true);
+        $top_losers = json_decode($top_losers_response->getBody(), true);
+        $companies = json_decode($companies_response->getBody(), true);
 
-        // Dapatkan respons dari API
-        $stocks = json_decode($response->getBody(), true);
-
-// Kembalikan respons ke klien
-        return response()->json($stocks);
+        return [
+            'companies' => $companies['data']['results'],
+            'top_losers' => $top_losers,
+            'top_gainers' => $top_gainers,
+        ];
 
     }
-
 }

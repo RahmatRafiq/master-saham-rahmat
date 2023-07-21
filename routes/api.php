@@ -19,4 +19,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/', [App\Http\Controllers\Api\ApiController::class, 'index'])->name('Api');
-//Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('Dashboard');
+Route::get('/top-loser', 'Api\ApiController@topLoser');
+Route::get('/top-gainer', 'Api\ApiController@topGainer');

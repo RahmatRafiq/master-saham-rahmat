@@ -75,7 +75,6 @@
                          @endforeach
                      </tbody>
                  </table>
-
              </div>
              <div class="todo">
                  <div class="head">
@@ -84,28 +83,18 @@
                      <i class='bx bx-filter'></i>
                  </div>
                  <ul class="todo-list">
-                     <li class="completed">
-                         <p>Todo List</p>
-                         <i class='bx bx-dots-vertical-rounded'></i>
-                     </li>
-                     <li class="completed">
-                         <p>Todo List</p>
-                         <i class='bx bx-dots-vertical-rounded'></i>
-                     </li>
-                     <li class="not-completed">
-                         <p>Todo List</p>
-                         <i class='bx bx-dots-vertical-rounded'></i>
-                     </li>
-                     <li class="completed">
-                         <p>Todo List</p>
-                         <i class='bx bx-dots-vertical-rounded'></i>
-                     </li>
-                     <li class="not-completed">
-                         <p>Todo List</p>
-                         <i class='bx bx-dots-vertical-rounded'></i>
-                     </li>
+                     @isset($topLosers)
+                         @foreach ($topLosers['data']['results'] as $topLoser)
+                             <li>
+                                 <p>{{ $topLoser['ticker'] }}</p>
+                                 <i class='bx bx-dots-vertical-rounded'></i>
+                             </li>
+                         @endforeach
+                     @endisset
                  </ul>
              </div>
+
+
              <div class="todo">
                  <div class="head">
                      <h3>Top 5 Perubahan Harga Tertinggi</h3>
@@ -113,26 +102,14 @@
                      <i class='bx bx-filter'></i>
                  </div>
                  <ul class="todo-list">
-                     <li class="completed">
-                         <p>Todo List</p>
-                         <i class='bx bx-dots-vertical-rounded'></i>
-                     </li>
-                     <li class="completed">
-                         <p>Todo List</p>
-                         <i class='bx bx-dots-vertical-rounded'></i>
-                     </li>
-                     <li class="not-completed">
-                         <p>Todo List</p>
-                         <i class='bx bx-dots-vertical-rounded'></i>
-                     </li>
-                     <li class="completed">
-                         <p>Todo List</p>
-                         <i class='bx bx-dots-vertical-rounded'></i>
-                     </li>
-                     <li class="not-completed">
-                         <p>Todo List</p>
-                         <i class='bx bx-dots-vertical-rounded'></i>
-                     </li>
+                     {{-- @isset($topGainers)
+                         @foreach ($topGainers['data']['results'] as $topGainer)
+                             <li>
+                                 <p>{{ $topGainer['ticker'] }}</p>
+                                 <i class='bx bx-dots-vertical-rounded'></i>
+                             </li>
+                         @endforeach
+                     @endisset --}}
                  </ul>
              </div>
          </div>

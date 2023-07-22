@@ -29,6 +29,10 @@ li {
 	--light-yellow: #FFF2C6;
 	--orange: #FD7238;
 	--light-orange: #FFE0D3;
+    --green: #2ecc71;
+    --light-green: #e6f4f1;
+    --red: #db504a;
+    --light-red: #fce8e6;
 }
 
 html {
@@ -383,16 +387,25 @@ body {
 	align-items: center;
 }
 #content main .box-info li:nth-child(1) .bx {
-	background: var(--light-blue);
-	color: var(--blue);
+    background: var(--light-blue);
+    color: var(--blue);
 }
 #content main .box-info li:nth-child(2) .bx {
-	background: var(--light-yellow);
-	color: var(--yellow);
+    background: var(--light-green);
+    color: var(--green);
 }
 #content main .box-info li:nth-child(3) .bx {
-	background: var(--light-orange);
-	color: var(--orange);
+    background: var(--light-red);
+    color: var(--red);
+}
+/* #content main .box-info li:nth-child(4) .bx {
+    background: var(--light-yellow);
+    color: var(--yellow);
+}
+#content main .box-info li:nth-child(5) .bx {
+    background: var(--light-orange);
+    color: var(--orange);
+} */
 }
 #content main .box-info li .text h3 {
 	font-size: 24px;
@@ -400,7 +413,7 @@ body {
 	color: var(--dark);
 }
 #content main .box-info li .text p {
-	color: var(--dark);	
+	color: var(--dark);
 }
 
 
@@ -507,10 +520,10 @@ body {
 	cursor: pointer;
 }
 #content main .table-data .todo .todo-list li.completed {
-	border-left: 10px solid var(--blue);
+	border-left: 10px solid var(--green);
 }
 #content main .table-data .todo .todo-list li.not-completed {
-	border-left: 10px solid var(--orange);
+	border-left: 10px solid var(--red);
 }
 #content main .table-data .todo .todo-list li:last-child {
 	margin-bottom: 0;

@@ -72,7 +72,6 @@
                                     <td> Rp {{ $result['close'] }}</td>
                                     <td>
                                         Perlembar
-                                        {{-- <img src="{{ $result['logo'] }}" alt="Company Logo"> --}}
                                     </td>
                                 </tr>
                             @else
@@ -92,7 +91,12 @@
                 @foreach ($response['top_losers']['results'] as $topLoser)
                     @if ($loop->iteration <= 5)
                         <li class="not-completed">
-                            <p>{{ $topLoser['ticker'] }}</p>
+                            <p><strong>
+                                    {{ $topLoser['ticker'] }}
+                                </strong>
+                                <br>
+                                CLose Rp {{ $topLoser['close'] }}
+                            </p>
                             <i class='bx bx-dots-vertical-rounded'></i>
                         </li>
                     @else
@@ -101,8 +105,6 @@
             @endforeach
         </ul>
     </div>
-
-
     <div class="todo">
         <div class="head">
             <h3>Top 5 Perubahan Harga Tertinggi</h3>
@@ -113,7 +115,12 @@
             @foreach ($response['top_gainers']['results'] as $topGainer)
                 @if ($loop->iteration <= 5)
                     <li class="completed">
-                        <p>{{ $topGainer['ticker'] }}</p>
+                        <p><strong>
+                                {{ $topGainer['ticker'] }}
+                            </strong>
+                            <br>
+                            CLose Rp {{ $topGainer['close'] }}
+                        </p>
                         <i class='bx bx-dots-vertical-rounded'></i>
                     </li>
                 @else

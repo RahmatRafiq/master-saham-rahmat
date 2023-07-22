@@ -394,7 +394,7 @@ body {
     color: var(--dark);
 }
 #content main .box-info li .text p {
-    color: var(--light);
+    color: var(--dark);
 }
 
 #content main .table-data {

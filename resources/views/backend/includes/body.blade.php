@@ -30,7 +30,6 @@
 
                 </span>
             </li>
-
             <li>
                 <i class='bx bx-trending-up'></i>
                 <span class="text">

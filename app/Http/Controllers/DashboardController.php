@@ -14,7 +14,5 @@ class DashboardController extends Controller
         return view('backend.layouts.dashboard')
             ->with('response', $response);
 
-        // return view('backend.layouts.dashboard', $response );
-
     }
 }

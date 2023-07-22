@@ -18,5 +18,3 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('Dashboard');
-Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'topLoser'])->name('Top Loser');
-Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'topGainer'])->name('Top Gainer');

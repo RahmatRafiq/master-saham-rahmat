@@ -30,14 +30,14 @@ class ApiController extends Controller
                 'X-API-KEY' => 'x9XNlAlZiYCFlPv8T5glLRgvkF71ln',
             ],
         ]);
-        $top_gainers = json_decode($top_gainers_response->getBody(), true);
-        $top_losers = json_decode($top_losers_response->getBody(), true);
         $companies = json_decode($companies_response->getBody(), true);
+        $top_losers = json_decode($top_losers_response->getBody(), true);
+        $top_gainers = json_decode($top_gainers_response->getBody(), true);
 
         return [
-            'top_gainers' => $top_gainers['data'],
-            'top_losers' => $top_losers['data'],
             'companies' => $companies['data'],
+            'top_losers' => $top_losers['data'],
+            'top_gainers' => $top_gainers['data'],
         ];
 
     }

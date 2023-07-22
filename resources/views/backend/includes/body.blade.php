@@ -25,7 +25,7 @@
              <li>
                  <i class='bx bxs-calendar-check'></i>
                  <span class="text">
-                     <h3>{{ $count }}</h3>
+                     <h3>123</h3>
                      <p>Jumlah Komoditas</p>
                  </span>
              </li>
@@ -64,7 +64,7 @@
                          </tr>
                      </thead>
                      <tbody>
-                         @foreach ($stocks['data']['results'] as $result)
+                         @foreach ($response['companies']['results'] as $result)
                              <tr>
                                  <td><strong>{{ $result['ticker'] }}</strong></td>
                                  <td>{{ $result['name'] }}</td>
@@ -83,14 +83,12 @@
                      <i class='bx bx-filter'></i>
                  </div>
                  <ul class="todo-list">
-                     @isset($topLosers)
-                         @foreach ($topLosers['data']['results'] as $topLoser)
-                             <li>
-                                 <p>{{ $topLoser['ticker'] }}</p>
-                                 <i class='bx bx-dots-vertical-rounded'></i>
-                             </li>
-                         @endforeach
-                     @endisset
+                     @foreach ($response['top_losers']['results'] as $topLoser)
+                         <li>
+                             <p>{{ $topLoser['ticker'] }}</p>
+                             <i class='bx bx-dots-vertical-rounded'></i>
+                         </li>
+                     @endforeach
                  </ul>
              </div>
 
@@ -102,14 +100,12 @@
                      <i class='bx bx-filter'></i>
                  </div>
                  <ul class="todo-list">
-                     {{-- @isset($topGainers)
-                         @foreach ($topGainers['data']['results'] as $topGainer)
-                             <li>
-                                 <p>{{ $topGainer['ticker'] }}</p>
-                                 <i class='bx bx-dots-vertical-rounded'></i>
-                             </li>
-                         @endforeach
-                     @endisset --}}
+                     @foreach ($response['top_gainers']['results'] as $topGainer)
+                         <li>
+                             <p>{{ $topGainer['ticker'] }}</p>
+                             <i class='bx bx-dots-vertical-rounded'></i>
+                         </li>
+                     @endforeach
                  </ul>
              </div>
          </div>

@@ -11,9 +11,10 @@ class DashboardController extends Controller
         $apiController = new ApiController();
         $response = $apiController->index();
 
+        return view('backend.layouts.dashboard')
+            ->with('response', $response);
 
-
-        return view('backend.layouts.dashboard', $response );
+        // return view('backend.layouts.dashboard', $response );
 
     }
 }

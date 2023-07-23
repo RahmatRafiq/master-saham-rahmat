@@ -45,8 +45,6 @@
                 </span>
             </li>
         </ul>
-
-
         <div class="table-data">
             <div class="order">
                 <div class="head">
@@ -54,7 +52,6 @@
                     <i class='bx bx-search'></i>
                     <i class='bx bx-filter'></i>
                 </div>
-
                 <table>
                     <thead>
                         <tr>
@@ -65,22 +62,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{-- @foreach ($response['trending']['results'] as $result)
-                            @if ($loop->iteration <= 9)
-                                <tr>
-                                    <td><strong>{{ $result['ticker'] }}</strong></td>
-                                    <td> Rp {{ $result['close'] }}</td>
-                                    <td>
-                                        Perlembar
-                                    </td>
-                                    <td>
-                                        {{ number_format($result['percent'], 5) }} %
-                                    </td>
-                                </tr>
-                            @else
-                            @break
-                        @endif
-                    @endforeach --}}
                         @foreach ($response['trending']['results'] as $result)
                             @if ($loop->iteration <= 9)
                                 <tr>
@@ -98,7 +79,6 @@
                             @break
                         @endif
                     @endforeach
-
                 </tbody>
             </table>
         </div>

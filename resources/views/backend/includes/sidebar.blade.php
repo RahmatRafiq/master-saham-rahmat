@@ -5,15 +5,15 @@
     </a>
     <ul class="side-menu top">
         <li class="active">
-            <a href="#">
+            <a href="{{ Route('Dashboard') }}">
                 <i class='bx bxs-dashboard'></i>
                 <span class="text">Dashboard</span>
             </a>
         </li>
-        <li>
-            <a href="#">
+        <li class="active">
+            <a href="{{ route('Daftar Komoditas') }}">
                 <i class='bx bxs-shopping-bag-alt'></i>
-                <span class="text">Daftar Komoditas</span>
+                <span class="text">Daftar Komoditas (Saham)</span>
             </a>
         </li>
         <li>

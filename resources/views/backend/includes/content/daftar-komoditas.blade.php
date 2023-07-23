@@ -36,9 +36,9 @@
                             <th>Kode</th>
                             <th>Nama</th>
                             <th>Logo</th>
-                            <th>Percent</th>
-                            <th>Close</th>
-                            <th>Change</th>
+                            <th>Pergerakan</th>
+                            <th>Harga Tutup</th>
+                            <th>Selisih</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -51,12 +51,17 @@
                                 </td>
                                 <td
                                     class="{{ $data['percent'] < 0 ? 'negative-percent' : ($data['percent'] > 0 ? 'positive-percent' : '') }}">
-                                    {{ number_format($data['percent'], 5) }} %
+                                    {{ number_format($data['percent'], 10) }} %
                                 </td>
                                 <td>Rp {{ $data['close'] }}</td>
-                                <td>{{ $data['change'] }}</td>
+                                <td
+                                    class="{{ $data['change'] < 0 ? 'negative-percent' : ($data['change'] > 0 ? 'positive-percent' : '') }}">
+                                    Rp
+                                    {{ number_format($data['change'], 5) }} %
+                                </td>
                             </tr>
                         @endforeach
+
                     </tbody>
                 </table>
             </div>

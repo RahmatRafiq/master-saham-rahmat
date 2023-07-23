@@ -61,22 +61,43 @@
                             <th>Ticker</th>
                             <th>close</th>
                             <th>Satuan</th>
+                            <th>Persen</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($response['trending']['results'] as $result)
-                            @if ($loop->iteration <= 5)
+                        {{-- @foreach ($response['trending']['results'] as $result)
+                            @if ($loop->iteration <= 9)
                                 <tr>
                                     <td><strong>{{ $result['ticker'] }}</strong></td>
                                     <td> Rp {{ $result['close'] }}</td>
                                     <td>
                                         Perlembar
                                     </td>
+                                    <td>
+                                        {{ number_format($result['percent'], 5) }} %
+                                    </td>
+                                </tr>
+                            @else
+                            @break
+                        @endif
+                    @endforeach --}}
+                        @foreach ($response['trending']['results'] as $result)
+                            @if ($loop->iteration <= 9)
+                                <tr>
+                                    <td><strong>{{ $result['ticker'] }}</strong></td>
+                                    <td> Rp {{ $result['close'] }}</td>
+                                    <td>
+                                        Perlembar
+                                    </td>
+                                    <td class="{{ $result['percent'] < 0 ? 'negative-percent' : '' }}">
+                                        {{ number_format($result['percent'], 5) }} %
+                                    </td>
                                 </tr>
                             @else
                             @break
                         @endif
                     @endforeach
+
                 </tbody>
             </table>
         </div>
@@ -95,6 +116,8 @@
                                 </strong>
                                 <br>
                                 CLose Rp {{ $topLoser['close'] }}
+                                <br>
+                                {{ number_format($topLoser['percent'], 5) }} %
                             </p>
                             <i class='bx bx-dots-vertical-rounded'></i>
                         </li>
@@ -119,6 +142,8 @@
                             </strong>
                             <br>
                             CLose Rp {{ $topGainer['close'] }}
+                            <br>
+                            {{ number_format($topGainer['percent'], 5) }} %
                         </p>
                         <i class='bx bx-dots-vertical-rounded'></i>
                     </li>

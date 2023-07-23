@@ -89,7 +89,8 @@
                                     <td>
                                         Perlembar
                                     </td>
-                                    <td class="{{ $result['percent'] < 0 ? 'negative-percent' : '' }}">
+                                    <td
+                                        class="{{ $result['percent'] < 0 ? 'negative-percent' : ($result['percent'] > 0 ? 'positive-percent' : '') }}">
                                         {{ number_format($result['percent'], 5) }} %
                                     </td>
                                 </tr>

@@ -570,3 +570,6 @@ body {
 .negative-percent {
     color: var(--red);
 }
+.positive-percent {
+    color: var(--green);
+}

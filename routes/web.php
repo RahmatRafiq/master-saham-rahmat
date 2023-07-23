@@ -18,3 +18,4 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('Dashboard');
+Route::get('/dashboard/daftar-komoditas', [App\Http\Controllers\DaftarKomoditasKontroller::class, 'index'])->name('Daftar Komoditas');

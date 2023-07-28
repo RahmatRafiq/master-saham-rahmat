@@ -30,7 +30,15 @@
                 <span class="text">Download PDF</span>
             </a>
         </div>
-
+        <br>
+        <div>
+            <form action="#">
+                <div class="form-input">
+                    <input type="search" placeholder="Cari Berdasarkan Ticker...">
+                    <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
+                </div>
+            </form>
+        </div>
         <ul class="box-info">
             <li>
                 <i class='bx bxs-calendar-check'></i>
@@ -67,6 +75,7 @@
                         <tr>
                             <th>Waktu HH-BB-TTT (JJ:MM)</th>
                             <th>Harga Buka</th>
+                            <th>Harga Tertinggi</th>
                             <th>Harga Tutup</th>
                             <th>Volume</th>
                         </tr>

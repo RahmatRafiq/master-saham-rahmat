@@ -209,6 +209,42 @@ body {
 #content nav .nav-link:hover {
     color: var(--blue);
 }
+#content form {
+    max-width: 400px;
+    width: 100%;
+    margin-right: auto;
+}
+#content form .form-input {
+    display: flex;
+    align-items: center;
+    height: 36px;
+}
+#content form .form-input input {
+    flex-grow: 1;
+    padding: 0 16px;
+    height: 100%;
+    border: none;
+    background: var(--light);
+    border-radius: 36px 0 0 36px;
+    outline: none;
+    width: 100%;
+    color: var(--dark);
+}
+#content form .form-input button {
+    width: 36px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--blue);
+    color: var(--light);
+    font-size: 18px;
+    border: none;
+    outline: none;
+    border-radius: 0 36px 36px 0;
+    cursor: pointer;
+}
+
 #content nav form {
     max-width: 400px;
     width: 100%;
@@ -244,6 +280,7 @@ body {
     border-radius: 0 36px 36px 0;
     cursor: pointer;
 }
+
 #content nav .notification {
     font-size: 20px;
     position: relative;

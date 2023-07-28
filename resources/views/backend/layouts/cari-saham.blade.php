@@ -11,7 +11,8 @@
     <!-- SIDEBAR -->
 
     <!-- CONTENT -->
-    @include('backend.includes.content.detail-saham')
+
+    @include('backend.includes.content.cari-saham')
     <!-- CONTENT -->
 
     <!-- JS -->

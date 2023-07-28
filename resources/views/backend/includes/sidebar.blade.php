@@ -17,9 +17,9 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="{{ route('Detail Saham') }}">
                 <i class='bx bxs-doughnut-chart'></i>
-                <span class="text">Bagan</span>
+                <span class="text">Detail Saham</span>
             </a>
         </li>
         <li>

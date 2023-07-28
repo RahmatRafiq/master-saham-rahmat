@@ -23,9 +23,9 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="{{ route('Cari Saham') }}">
                 <i class='bx bxs-message-dots'></i>
-                <span class="text">Trending</span>
+                <span class="text">Cari Saham</span>
             </a>
         </li>
         <li>

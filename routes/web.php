@@ -20,3 +20,4 @@ Route::get('/', function () {
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('Dashboard');
 Route::get('/dashboard/daftar-komoditas', [App\Http\Controllers\DaftarKomoditasKontroller::class, 'index'])->name('Daftar Komoditas');
 Route::get('/dashboard/detail-saham', [App\Http\Controllers\DetailSahamController::class, 'index'])->name('Detail Saham');
+Route::get('/dashboard/cari-saham', [App\Http\Controllers\CariSahamController::class, 'index'])->name('Cari Saham');

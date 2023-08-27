@@ -244,7 +244,74 @@ body {
     border-radius: 0 36px 36px 0;
     cursor: pointer;
 }
+/*----------------------------------------------------------------*/
+#content form {
+    max-width: 400px;
+    width: 100%;
+    margin-right: auto;
+}
+#content form .form-input1 {
+    display: flex;
+    align-items: center;
+    height: 36px;
+    margin-bottom: 10px;
+}
+#content form .form-input1 input {
+    flex-grow: 1;
+    padding: 0 16px;
+    height: 100%;
+    border: none;
+    background: var(--grey);
+    border-radius: 36px 36px 36px 36px;
+    outline: none;
+    width: 100%;
+    color: var(--dark);
+}
+#content form .form-input1 .form-select {
+    width: 120px;
+    height: 100%;
+    border: none;
+    background: var(--blue);
+    border-radius: 36px 36px 36px 36px;
+    outline: none;
+    color: var(--light);
+    padding: 0 10px;
+}
+#content form .form-input1 button {
+    width: 36px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--blue);
+    color: var(--light);
+    font-size: 18px;
+    border: none;
+    outline: none;
+    border-radius: 36px 36px 36px 36px;
+    cursor: pointer;
+}
+#content form .form-input1 button.search-btn {
+    width: 80px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--blue);
+    color: var(--light);
+    font-size: 14px;
+    border: none;
+    outline: none;
+    border-radius: 36px 36px 36px 36px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
 
+#content form .form-input1 button.search-btn:hover {
+    background: var(--lightblue);
+    color: var(--dark);
+}
+/*----------------------------------------------------------------*/
 #content nav form {
     max-width: 400px;
     width: 100%;

@@ -42,6 +42,7 @@
                         </tr>
                     </thead>
                     <tbody>
+
                         @foreach ($response as $data)
                             <tr>
                                 <td><strong>{{ $data['ticker'] }}</strong></td>
@@ -59,9 +60,19 @@
                                     Rp
                                     {{ number_format($data['change'], 5) }} %
                                 </td>
+                                <td>
+                                    {{-- <a href="{{ route('Sortir Saham') }}" class="btn-add">
+                                        <i class="bx bx-plus"></i>
+                                        <span class="text">Tambah kedalam sortir Saham</span>
+                                    </a> --}}
+                                    <a href="{{ route('Sortir Saham', ['ticker' => $data['ticker']]) }}"
+                                        class="btn-add">
+                                        <i class="bx bx-plus"></i>
+                                        <span class="text">Tambah ke dalam sortir saham</span>
+                                    </a>
+                                </td>
                             </tr>
                         @endforeach
-
                     </tbody>
                 </table>
             </div>

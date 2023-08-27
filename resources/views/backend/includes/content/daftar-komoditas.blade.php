@@ -61,10 +61,6 @@
                                     {{ number_format($data['change'], 5) }} %
                                 </td>
                                 <td>
-                                    {{-- <a href="{{ route('Sortir Saham') }}" class="btn-add">
-                                        <i class="bx bx-plus"></i>
-                                        <span class="text">Tambah kedalam sortir Saham</span>
-                                    </a> --}}
                                     <a href="{{ route('Sortir Saham', ['ticker' => $data['ticker']]) }}"
                                         class="btn-add">
                                         <i class="bx bx-plus"></i>

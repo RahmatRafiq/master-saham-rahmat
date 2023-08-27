@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\HasilSortir;
 use App\Models\Sortir;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
@@ -9,9 +10,18 @@ use Illuminate\Support\Facades\Log;
 
 class SortirController extends Controller
 {
+
+    public function index()
+    {
+        $sortirData = Sortir::orderBy('created_at', 'desc')->paginate(10);
+        return view('backend.layouts.sortir-saham ',
+            ['sortirData' => $sortirData]
+        );
+
+    }
+
     public function sortirSaham($ticker)
     {
-        // Simpan data harga saham dari goapi pada pukul 18:00 WITA
         $apiKey = 'x9XNlAlZiYCFlPv8T5glLRgvkF71ln';
         $response = Http::get("https://api.goapi.id/v1/stock/idx/prices?symbols=$ticker&api_key=$apiKey");
         $data = $response->json();
@@ -42,24 +52,43 @@ class SortirController extends Controller
 
     public function processAndSortStocksDaily()
     {
-        // Proses data saham pada pukul 09:00 WITA
-        // Gunakan RapidAPI untuk memproses dan menyimpan data sortir sesuai kriteria
-        // Lakukan perbandingan dan sortir data
+        $sortirData = Sortir::orderBy('created_at', 'desc')->first();
 
-        // Contoh kode menggunakan RapidAPI (sesuaikan dengan endpoint yang ada)
-        $response = Http::withHeaders([
-            'X-RapidAPI-Host' => 'apidojo-yahoo-finance-v1.p.rapidapi.com',
-            'X-RapidAPI-Key' => env('RAPIDAPI_KEY'),
-        ])->get('https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v3/get-chart', [
-            'interval' => '1d',
-            'symbol' => 'BBCA.JK',
-            'range' => '1d',
-        ]);
+        if ($sortirData) {
+            $symbol = $sortirData->symbol;
 
-        $data = $response->json();
-        // Lakukan perbandingan dan sortir data sesuai kriteria
-        // ...
+            $yesterdayLow = $sortirData->low;
+
+            $apiKey = ('24958adb69msha8badb55bc81ba7p131a9bjsn58cba7e0cbdc');
+            $response = Http::withHeaders([
+                'X-RapidAPI-Host' => 'apidojo-yahoo-finance-v1.p.rapidapi.com',
+                'X-RapidAPI-Key' => $apiKey,
+            ])->get('https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v3/get-chart', [
+                'interval' => '1d',
+                'symbol' => $symbol,
+                'range' => '1d',
+            ]);
+
+            $rapidApiData = $response->json();
+            $todayClose = $rapidApiData['chart']['result'][0]['indicators']['quote'][0]['close'][0];
+
+            if ($yesterdayLow < $todayClose) {
+                HasilSortir::create([
+                    'symbol' => $sortirData->symbol,
+                    'open' => $yesterdayLow,
+                    'high' => $todayClose,
+                    'low' => $yesterdayLow,
+                    'close' => $todayClose,
+                ]);
+
+                Log::info('Harga low di bawah harga close terbaru');
+            } else {
+                Log::info('Harga low di atas atau sama dengan harga close terbaru');
+            }
+
+        }
 
         Log::info('Data saham diproses dan di-sortir pada: ' . Carbon::now());
     }
+
 }

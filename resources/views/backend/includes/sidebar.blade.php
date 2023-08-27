@@ -29,9 +29,9 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="{{ route('Sortir-Saham') }}">
                 <i class='bx bxs-group'></i>
-                <span class="text">Team</span>
+                <span class="text">Sortir Saham</span>
             </a>
         </li>
         <li>

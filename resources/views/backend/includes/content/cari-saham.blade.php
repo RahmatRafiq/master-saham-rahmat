@@ -69,6 +69,17 @@
                         </div>
                     </form>
                     <div id="chart"></div>
+                    <div>
+                        <div>
+                            @if (isset($data['chart']['result'][0]['meta']['symbol']))
+                                <a href="{{ route('Sortir Saham', ['ticker' => $data['chart']['result'][0]['meta']['symbol']]) }}"
+                                    class="btn-add">
+                                    <i class="bx bx-plus"></i>
+                                    <span class="text">Tambah Kesortir</span>
+                                </a>
+                            @endif
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

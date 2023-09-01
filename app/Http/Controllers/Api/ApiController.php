@@ -47,13 +47,13 @@ class ApiController extends Controller
             ],
         ]);
 
-        $google_finance_one = $client->get('https://serpapi.com/search.json?engine=google_finance&q=GOTO%3AIDX&api_key=09512e977d82645fced8a76ff6d7cb9c21566062e43ba4ca4e219a926b38c097');
+        // $google_finance_one = $client->get('https://serpapi.com/search.json?engine=google_finance&q=GOTO%3AIDX&api_key=09512e977d82645fced8a76ff6d7cb9c21566062e43ba4ca4e219a926b38c097');
 
         $trending = json_decode($trending_response->getBody(), true);
         $companies = json_decode($companies_response->getBody(), true);
         $top_losers = json_decode($top_losers_response->getBody(), true);
         $top_gainers = json_decode($top_gainers_response->getBody(), true);
-        $go_finance_one = json_decode($google_finance_one->getBody(), true);
+        // $go_finance_one = json_decode($google_finance_one->getBody(), true);
         $chart_stock = json_decode($chart_stock_yahoo->getBody(), true);
 
         return [
@@ -61,7 +61,7 @@ class ApiController extends Controller
             'companies' => $companies['data'],
             'top_losers' => $top_losers['data'],
             'top_gainers' => $top_gainers['data'],
-            'go_finance_one' => $go_finance_one['graph'],
+            // 'go_finance_one' => $go_finance_one['graph'],
             'chart_stock' => $chart_stock['chart'],
         ];
 

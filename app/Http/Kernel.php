@@ -66,14 +66,17 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
     ];
-
+    protected $commands = [
+        \App\Console\Commands\SortirProcessCommand::class,
+    ];
     protected function schedule(Schedule $schedule)
     {
+
         // Jalankan fungsi sortirSaham pada pukul 18:00 WITA
         $schedule->command('sortir:saham')->dailyAt('18:00');
 
         // Jalankan fungsi processAndSortStocksDaily pada pukul 09:00 WITA
-        $schedule->command('sortir:process')->dailyAt('09:00');
+        $schedule->command('sortir:process')->dailyAt('11:35');
     }
 
 }

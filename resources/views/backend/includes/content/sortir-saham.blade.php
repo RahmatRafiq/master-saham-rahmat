@@ -30,14 +30,19 @@
                 <ul class="todo-list">
                     @foreach ($sortirData as $dataSortir)
                         <li class="not-completed">
-                            <p><strong>
-                                    {{ $dataSortir->symbol }}
-                                </strong>
-                                <br>
-                                Harga Tutup = Rp {{ $dataSortir->close }}
-                                <br>
-                                harga Terendah = Rp {{ $dataSortir->low }}
-                            </p>
+                            <td>
+                                <p><strong>
+                                        {{ $dataSortir->symbol }}
+                                    </strong>
+                                    <br>
+                                    Harga Tutup = Rp {{ $dataSortir->close }}
+                                    <br>
+                                    harga Terendah = Rp {{ $dataSortir->low }}
+                                    <br>
+                                    <br>
+                                    Waktu : {{ $dataSortir->created_at->format('d-m-Y') }}
+                                </p>
+                            </td>
                             <i class='bx bx-dots-vertical-rounded'></i>
                         </li>
                     @endforeach
@@ -51,19 +56,26 @@
                 </div>
                 <ul class="todo-list">
 
-                    <li class="completed">
-                        <p><strong>
-                                KODE
-                            </strong>
-                            <br>
-                            CLose Rp 321
-                            <br>
-                            123 %
-                        </p>
-                        <i class='bx bx-dots-vertical-rounded'></i>
-                    </li>
+                    @foreach ($hasilSortir as $hasil)
+                        <li class="completed">
+                            <p><strong>
+                                    {{ $hasil->symbol }}
+                                </strong>
+                                <br>
+                                Harga Terendah Sebelumnya = Rp {{ $hasil->open }}
+                                <br>
+                                Harga Tutup Hari Ini = Rp {{ $hasil->high }}
+                                <br>
+                                <br>
+                                Waktu : {{ $hasil->created_at }}
+                            </p>
+                            <i class='bx bx-dots-vertical-rounded'></i>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
+            <a href="{{ route('Process and Sort Stocks Daily') }}" class="btn btn-primary">Process and Sort Stocks</a>
+
         </div>
     </main>
     <!-- MAIN -->

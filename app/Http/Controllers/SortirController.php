@@ -14,8 +14,12 @@ class SortirController extends Controller
     public function index()
     {
         $sortirData = Sortir::orderBy('created_at', 'desc')->paginate(10);
+        $hasilSortir = HasilSortir::orderBy('created_at', 'asc')->paginate(10);
         return view('backend.layouts.sortir-saham ',
-            ['sortirData' => $sortirData]
+            [
+                'sortirData' => $sortirData,
+                'hasilSortir' => $hasilSortir,
+            ]
         );
 
     }
@@ -43,23 +47,23 @@ class SortirController extends Controller
                 'close' => $close,
             ]);
 
+            // dd($data);
             return redirect()->back()->with('success', 'Ticker berhasil ditambahkan ke dalam sortir saham.');
         } else {
             return redirect()->back()->with('error', 'Ticker tidak valid atau tidak dapat ditemukan.');
         }
-
     }
 
     public function processAndSortStocksDaily()
     {
-        $sortirData = Sortir::orderBy('created_at', 'desc')->first();
+        $sortirData = Sortir::get();
 
-        if ($sortirData) {
-            $symbol = $sortirData->symbol;
+        $apiKey = '24958adb69msha8badb55bc81ba7p131a9bjsn58cba7e0cbdc';
 
-            $yesterdayLow = $sortirData->low;
+        foreach ($sortirData as $data) {
+            $symbol = $data->symbol;
+            $yesterdayLow = $data->low;
 
-            $apiKey = ('24958adb69msha8badb55bc81ba7p131a9bjsn58cba7e0cbdc');
             $response = Http::withHeaders([
                 'X-RapidAPI-Host' => 'apidojo-yahoo-finance-v1.p.rapidapi.com',
                 'X-RapidAPI-Key' => $apiKey,
@@ -72,20 +76,29 @@ class SortirController extends Controller
             $rapidApiData = $response->json();
             $todayClose = $rapidApiData['chart']['result'][0]['indicators']['quote'][0]['close'][0];
 
+            // $rapidApiData = $response->json();
+            // $todayOpen = $rapidApiData['chart']['result'][0]['indicators']['quote'][0]['open'][0];
+
             if ($yesterdayLow < $todayClose) {
                 HasilSortir::create([
-                    'symbol' => $sortirData->symbol,
+                    'symbol' => $data->symbol,
                     'open' => $yesterdayLow,
                     'high' => $todayClose,
                     'low' => $yesterdayLow,
                     'close' => $todayClose,
                 ]);
-
-                Log::info('Harga low di bawah harga close terbaru');
+                // if ($yesterdayLow > $todayOpen) {
+                //     HasilSortir::create([
+                //         'symbol' => $data->symbol,
+                //         'open' => $yesterdayLow,
+                //         'high' => $todayOpen,
+                //         'low' => $yesterdayLow,
+                //         'close' => $todayOpen,
+                //     ]);
+                Log::info('Harga low di bawah harga close terbaru untuk symbol: ' . $data->symbol);
             } else {
-                Log::info('Harga low di atas atau sama dengan harga close terbaru');
+                Log::info('Harga low di atas atau sama dengan harga close terbaru untuk symbol: ' . $data->symbol);
             }
-
         }
 
         Log::info('Data saham diproses dan di-sortir pada: ' . Carbon::now());

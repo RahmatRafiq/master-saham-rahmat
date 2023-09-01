@@ -64,7 +64,7 @@
                                     <a href="{{ route('Sortir Saham', ['ticker' => $data['ticker']]) }}"
                                         class="btn-add">
                                         <i class="bx bx-plus"></i>
-                                        <span class="text">Tambah ke dalam sortir saham</span>
+                                        <span class="text">Tambah Kesortir</span>
                                     </a>
                                 </td>
                             </tr>

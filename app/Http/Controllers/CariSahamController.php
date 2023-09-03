@@ -20,7 +20,7 @@ class CariSahamController extends Controller
 
         $response = Http::withHeaders([
             'X-RapidAPI-Host' => 'apidojo-yahoo-finance-v1.p.rapidapi.com',
-            'X-RapidAPI-Key' => '24958adb69msha8badb55bc81ba7p131a9bjsn58cba7e0cbdc',
+            'X-RapidAPI-Key' => '331aea18e2msh7fc6e659aea654bp10147ejsn87ccbc97d54c',
         ])->get('https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v3/get-chart', [
             'interval' => $interval,
             'symbol' => $symbol,

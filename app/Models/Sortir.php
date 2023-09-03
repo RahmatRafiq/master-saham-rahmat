@@ -17,5 +17,6 @@ class Sortir extends Model
         'high',
         'low',
         'close',
+        'date',
     ];
 }

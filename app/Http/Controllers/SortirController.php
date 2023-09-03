@@ -37,6 +37,7 @@ class SortirController extends Controller
             $high = $stockData['high'];
             $low = $stockData['low'];
             $close = $stockData['close'];
+            $date = $stockData['date'];
 
             Sortir::create([
                 'symbol' => $symbol,
@@ -44,6 +45,7 @@ class SortirController extends Controller
                 'high' => $high,
                 'low' => $low,
                 'close' => $close,
+                'date' => $date,
             ]);
 
             // dd($data);

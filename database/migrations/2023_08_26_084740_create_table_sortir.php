@@ -18,6 +18,7 @@ return new class extends Migration
             $table->decimal('high', 10, 2);
             $table->decimal('low', 10, 2);
             $table->decimal('close', 10, 2);
+            $table->date('date');
             $table->timestamps();
         });
 

@@ -44,9 +44,32 @@
                                 </p>
                             </td>
                             <td>
-                                <a href="#modal-1"><i class='bx bx-dots-vertical-rounded'></i></a>
+                                <a href="#modal-1" class="hapus-button" data-id="{{ $dataSortir->id }}"><i
+                                        class='bx bx-dots-vertical-rounded'></i></a>
                             </td>
                         </li>
+                        <div id="modal-1">
+                            <a href="#" class="modal__bg"></a>
+                            <div class="modal__content small-modal">
+                                <div>
+                                    <h1 class="content__title">
+                                        Rubah Data ?
+                                    </h1>
+                                    <div class="modal-buttons">
+                                        <a href="{{ route('sortir-saham.destroy', ['id' => $dataSortir->id]) }}">
+                                            <button class="delete-button">Hapus
+                                            </button>
+                                        </a>
+                                        <button class="update-button">Perbarui</button>
+                                    </div>
+                                    <div class="content__btn-close">
+                                        <a href="#">
+                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     @endforeach
                 </ul>
             </div>
@@ -57,7 +80,6 @@
                     <i class='bx bx-filter'></i>
                 </div>
                 <ul class="todo-list">
-
                     @foreach ($hasilSortir as $hasil)
                         <li class="completed">
                             <td>
@@ -74,33 +96,35 @@
                                 </p>
                             </td>
                             <td>
-                                <a href="#modal-1"><i class='bx bx-dots-vertical-rounded'></i></a>
+                                <a href="#modal-2"><i class='bx bx-dots-vertical-rounded'></i></a>
                             </td>
                         </li>
+                        <div id="modal-2">
+                            <a href="#" class="modal__bg"></a>
+                            <div class="modal__content small-modal">
+                                <div>
+                                    <h1 class="content__title">
+                                        Rubah Data ?
+                                    </h1>
+                                    <div class="modal-buttons">
+                                        <a href="{{ route('hasil-sortir.destroy', ['id' => $hasil->id]) }}">
+                                            <button class="delete-button">Hapus
+                                            </button>
+                                        </a>
+                                        <button class="update-button">Perbarui</button>
+                                    </div>
+                                    <div class="content__btn-close">
+                                        <a href="#">
+                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     @endforeach
                 </ul>
             </div>
             <a href="{{ route('Process and Sort Stocks Daily') }}" class="btn btn-primary">Process and Sort Stocks</a>
-        </div>
-        <div id="modal-1">
-            <a href="#" class="modal__bg"></a>
-            <div class="modal__content small-modal">
-                <div>
-                    <h1 class="content__title">
-                        Update data saham?
-                    </h1>
-                    <div class="modal-buttons">
-                        <button class="update-button">Iya</button>
-                    </div>
-                    <div class="content__btn-close">
-                        <a href="#">
-                            <!-- href disi untuk route untuk request ulang   -->
-
-                            <i class="fa fa-times" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
         </div>
 </section>
 

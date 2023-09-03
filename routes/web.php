@@ -27,5 +27,8 @@ Route::post('/dashboard/cari-saham', [App\Http\Controllers\CariSahamController::
 
 Route::get('/dashboard/sortir-saham', [App\Http\Controllers\SortirController::class, 'index'])->name('Sortir-Saham');
 Route::get('/dashboard/sortir-saham/{ticker}', [App\Http\Controllers\SortirController::class, 'sortirSaham'])->name('Sortir Saham');
+Route::get('/dashboard/sortir-saham/{id}/Hapus-Sortir', [App\Http\Controllers\SortirController::class, 'destroySortirSaham'])->name('sortir-saham.destroy');
+Route::get('/dashboard/sortir-saham/{id}/Hapus-Hasil', [App\Http\Controllers\SortirController::class, 'destroyHasilSortir'])->name('hasil-sortir.destroy');
+
 Route::get('/dashboard/process-and-sort-stocks-daily', [App\Http\Controllers\SortirController::class, 'processAndSortStocksDaily'])->name('Process and Sort Stocks Daily');
 Route::get('/dashboard/sortir-saham/{ticker}', [App\Http\Controllers\SortirController::class, 'sortirSaham'])->name('Sortir Saham');

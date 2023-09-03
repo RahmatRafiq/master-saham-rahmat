@@ -782,7 +782,16 @@ body {
     transition: background-color 0.3s;
     margin-bottom: 20px;
 }
-
+.delete-button {
+    padding: 10px 20px;
+    background-color: var(--red);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 20px;
+}
 .update-button:hover {
     background-color: #0056b3;
 }

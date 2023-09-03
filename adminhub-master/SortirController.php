@@ -64,7 +64,7 @@ class SortirController extends Controller
     {
         $sortirData = Sortir::get();
 
-        $apiKey = '331aea18e2msh7fc6e659aea654bp10147ejsn87ccbc97d54c';
+        $apiKey = '24958adb69msha8badb55bc81ba7p131a9bjsn58cba7e0cbdc';
 
         foreach ($sortirData as $data) {
             $symbol = $data->symbol;

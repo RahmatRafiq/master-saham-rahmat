@@ -27,7 +27,7 @@
                     <i class='bx bx-plus'></i>
                     <i class='bx bx-filter'></i>
                 </div>
-                <ul class="todo-list">
+                {{-- <ul class="todo-list">
                     @foreach ($sortirData as $dataSortir)
                         <li class="not-completed">
                             <td>
@@ -70,6 +70,31 @@
                                 </div>
                             </div>
                         </div>
+                    @endforeach
+                </ul> --}}
+                <ul class="todo-list">
+                    @foreach ($sortirData as $dataSortir)
+                        <li class="not-completed">
+                            <td>
+                                <p><strong>
+                                        {{ $dataSortir->symbol }}
+                                    </strong>
+                                    <br>
+                                    Harga Tutup = Rp {{ $dataSortir->close }}
+                                    <br>
+                                    harga Terendah = Rp {{ $dataSortir->low }}
+                                    <br>
+                                    <br>
+                                    Waktu : {{ $dataSortir->created_at->format('d-m-Y') }}
+                                </p>
+                            </td>
+                            <td>
+                                <a href="{{ route('sortir-saham.destroy', ['id' => $dataSortir->id]) }}"
+                                    class="hapus-button" data-id="{{ $dataSortir->id }}">
+                                    <i class='bx bxs-message-square-minus'></i></a>
+
+                            </td>
+                        </li>
                     @endforeach
                 </ul>
             </div>

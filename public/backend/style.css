@@ -671,6 +671,17 @@ body {
         min-width: 420px;
     }
 }
+@media screen and (max-width: 500px) {
+    #content main .table-data .order table th:nth-child(6),
+    #content main .table-data .order table td:nth-child(6),
+    #content main .table-data .order table th:nth-child(4),
+    #content main .table-data .order table td:nth-child(4),
+    #content main .table-data .order table th:nth-child(3),
+    #content main .table-data .order table td:nth-child(3) {
+        display: none;
+    }
+}
+
 .negative-percent {
     color: var(--red);
 }

@@ -18,10 +18,6 @@
                     </li>
                 </ul>
             </div>
-            <a href="#" class="btn-download">
-                <i class="bx bxs-cloud-download"></i>
-                <span class="text">Download PDF</span>
-            </a>
         </div>
         <div class="table-data">
             <div class="order">
@@ -46,7 +42,19 @@
                         @foreach ($response as $data)
                             <tr>
                                 <td><strong>{{ $data['ticker'] }}</strong></td>
-                                <td>{{ $data['name'] }}</td>
+                                <td>{{ $data['name'] }}
+                                    <ul>
+                                        <br>
+                                        <div class="head-title">
+                                            <a href="{{ route('Sortir Saham', ['ticker' => $data['ticker']]) }}"
+                                                class="btn-download">
+                                                <i class='bx bx-add-to-queue'></i>
+                                                <span class="text">Tambah ke Sortir</span>
+                                            </a>
+                                        </div>
+
+                                    </ul>
+                                </td>
                                 <td>
                                     <img src="{{ $data['logo'] }}" alt="Company Logo">
                                 </td>
@@ -59,13 +67,6 @@
                                     class="{{ $data['change'] < 0 ? 'negative-percent' : ($data['change'] > 0 ? 'positive-percent' : '') }}">
                                     Rp
                                     {{ number_format($data['change'], 5) }} %
-                                </td>
-                                <td>
-                                    <a href="{{ route('Sortir Saham', ['ticker' => $data['ticker']]) }}"
-                                        class="btn-add">
-                                        <i class="bx bx-plus"></i>
-                                        <span class="text">Tambah Kesortir</span>
-                                    </a>
                                 </td>
                             </tr>
                         @endforeach

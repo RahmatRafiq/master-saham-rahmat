@@ -12,13 +12,13 @@
         </li>
         <li class="active">
             <a href="{{ route('Daftar Komoditas') }}">
-                <i class='bx bxs-shopping-bag-alt'></i>
+                <i class="bx bx-list-ul "style="font-weight: bold;"></i>
                 <span class="text">Daftar Komoditas (Saham)</span>
             </a>
         </li>
         <li>
             <a href="{{ route('Detail Saham') }}">
-                <i class='bx bxs-doughnut-chart'></i>
+                <i class='bx bxs-detail'></i>
                 <span class="text">Detail Saham</span>
             </a>
         </li>
@@ -30,13 +30,13 @@
         </li>
         <li>
             <a href="{{ route('Sortir-Saham') }}">
-                <i class='bx bxs-group'></i>
+                <i class="bx bx-sort" style="font-weight: bold;"></i>
                 <span class="text">Sortir Saham</span>
             </a>
         </li>
         <li>
             <a href="#">
-                <i class='bx bxs-group'></i>
+                <i class="bx bx-sitemap"style="font-weight: bold;"></i>
                 <span class="text">Simulasi</span>
             </a>
         </li>

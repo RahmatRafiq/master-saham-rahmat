@@ -22,14 +22,17 @@
         </div>
 
         <ul class="box-info">
-            <li>
-                <i class='bx bxs-calendar-check'></i>
-                <span class="text">
-                    <h3>{{ $response['companies']['count'] }}</h3>
-                    <p>Jumlah Komoditas yang Tercatat pada IDX</p>
+            <a href="{{ route('Daftar Komoditas') }}">
+                <li>
+                    <i class='bx bxs-calendar-check'></i>
+                    <span class="text">
+                        <h3>{{ $response['companies']['count'] }}</h3>
+                        <p>Jumlah Komoditas yang Tercatat pada IDX</p>
 
-                </span>
-            </li>
+                    </span>
+
+                </li>
+            </a>
             <li>
                 <i class='bx bx-trending-up'></i>
                 <span class="text">
@@ -51,7 +54,7 @@
                     <i class="bx bx-list-ul"></i>
                     <span class="text">
                         <h3>{{ $sortirData }}</h3>
-                        <p>Jumlah List Sorti Saham</p>
+                        <p>Jumlah List Sortir Saham</p>
                     </span>
                 </li>
             </a>

@@ -69,16 +69,106 @@
                         </div>
                     </form>
                     <div id="chart"></div>
+                    {{-- <div>
+                        @if (isset($data['chart']['result'][0]['meta']))
+                            <div class="todo">
+                                <div class="head">
+                                    <h3>Metadata Saham
+
+                                        @php
+                                            $tickerWithoutSuffix = str_replace('.JK', '', $data['chart']['result'][0]['meta']['symbol']);
+                                        @endphp
+                                        {{ $tickerWithoutSuffix }}
+                                    </h3>
+                                    <i class='bx bx-plus'></i>
+                                    <i class='bx bx-filter'></i>
+                                </div>
+                                <ul class="todo-list">
+                                    <li class="not-completed">
+                                        <p><strong>Mata Uang:</strong>
+                                            {{ $data['chart']['result'][0]['meta']['currency'] }}</p>
+                                    </li>
+                                    <li class="not-completed">
+                                        <p><strong>Kurs Terakhir:</strong>
+                                            {{ $data['chart']['result'][0]['meta']['symbol'] }}</p>
+                                    </li>
+                                    <li class="not-completed">
+                                        <p><strong>Bursa:</strong>
+                                            {{ $data['chart']['result'][0]['meta']['exchangeName'] }}</p>
+                                    </li>
+                                    <li class="not-completed">
+                                        <p><strong>Jenis Instrumen:</strong>
+                                            {{ $data['chart']['result'][0]['meta']['instrumentType'] }}</p>
+                                    </li>
+                                    <li class="not-completed">
+                                        <p><strong>Tanggal Perdagangan Pertama:</strong>
+                                            {{ date('d-m-Y', $data['chart']['result'][0]['meta']['firstTradeDate']) }}
+                                        </p>
+                                    </li>
+                                    <li class="not-completed">
+                                        <p><strong>Waktu Pasar Reguler:</strong>
+                                            {{ date('d-m-Y H:i:s', $data['chart']['result'][0]['meta']['regularMarketTime']) }}
+                                        </p>
+                                    </li>
+                                    <li class="not-completed">
+                                        <p><strong>Offset GMT:</strong>
+                                            {{ $data['chart']['result'][0]['meta']['gmtoffset'] }}</p>
+                                    </li>
+                                    <li class="not-completed">
+                                        <p><strong>Zona Waktu:</strong>
+                                            {{ $data['chart']['result'][0]['meta']['timezone'] }}</p>
+                                    </li>
+                                    <li class="not-completed">
+                                        <p><strong>Zona Waktu Bursa:</strong>
+                                            {{ $data['chart']['result'][0]['meta']['exchangeTimezoneName'] }}</p>
+                                    </li>
+                                    <li class="not-completed">
+                                        <p><strong>Harga Pasar Reguler:</strong> Rp
+                                            {{ $data['chart']['result'][0]['meta']['regularMarketPrice'] }}</p>
+                                    </li>
+                                    <li class="not-completed">
+                                        <p><strong>Tutupan Chart Sebelumnya:</strong> Rp
+                                            {{ $data['chart']['result'][0]['meta']['chartPreviousClose'] }}</p>
+                                    </li>
+                                    <li class="not-completed">
+                                        <p><strong>Hint Harga:</strong>
+                                            {{ $data['chart']['result'][0]['meta']['priceHint'] }}</p>
+                                    </li>
+                                </ul>
+                        @endif
+                    </div> --}}
                     <div>
-                        <div>
+                        {{-- <div>
                             @if (isset($data['chart']['result'][0]['meta']['symbol']))
-                                <a href="{{ route('Sortir Saham', ['ticker' => $data['chart']['result'][0]['meta']['symbol']]) }}"
+                                @php
+                                    $tickerWithoutSuffix = str_replace('.JK', '', $data['chart']['result'][0]['meta']['symbol']);
+                                @endphp
+                                <a href="{{ route('Sortir Saham', ['ticker' => $tickerWithoutSuffix]) }}"
                                     class="btn-add">
                                     <i class="bx bx-plus"></i>
                                     <span class="text">Tambah Kesortir</span>
                                 </a>
                             @endif
                         </div>
+                        <div>
+                            @if (isset($dataProfil['quoteSummary']['result'][0]['summaryProfile']))
+                                {{ $dataProfil['quoteSummary']['result'][0]['summaryProfile']['address1'] }}
+                                {{ $dataProfil['quoteSummary']['result'][0]['summaryProfile']['address2'] }}
+                                {{ $dataProfil['quoteSummary']['result'][0]['summaryProfile']['city'] }}
+                                {{ $dataProfil['quoteSummary']['result'][0]['summaryProfile']['zip'] }}
+                                {{ $dataProfil['quoteSummary']['result'][0]['summaryProfile']['country'] }}
+                                {{ $dataProfil['quoteSummary']['result'][0]['summaryProfile']['phone'] }}
+                                {{ $dataProfil['quoteSummary']['result'][0]['summaryProfile']['fax'] }}
+                                {{ $dataProfil['quoteSummary']['result'][0]['summaryProfile']['website'] }}
+                                {{ $dataProfil['quoteSummary']['result'][0]['summaryProfile']['industry'] }}
+                                {{ $dataProfil['quoteSummary']['result'][0]['summaryProfile']['industryDisp'] }}
+                                {{ $dataProfil['quoteSummary']['result'][0]['summaryProfile']['sector'] }}
+                                {{ $dataProfil['quoteSummary']['result'][0]['summaryProfile']['sectorDisp'] }}
+                                {{ $dataProfil['quoteSummary']['result'][0]['summaryProfile']['longBusinessSummary'] }}
+                                {{ $dataProfil['quoteSummary']['result'][0]['summaryProfile']['fullTimeEmployees'] }}
+                                {{ $dataProfil['quoteSummary']['result'][0]['summaryProfile']['maxAge'] }}
+                            @endif
+                        </div> --}}
                     </div>
                 </div>
             </div>

@@ -18,19 +18,28 @@ class CariSahamController extends Controller
         $interval = $request->input('interval_option');
         $range = $request->input('range_option');
 
-        $response = Http::withHeaders([
+        $responseChart = Http::withHeaders([
             'X-RapidAPI-Host' => 'apidojo-yahoo-finance-v1.p.rapidapi.com',
-            'X-RapidAPI-Key' => '331aea18e2msh7fc6e659aea654bp10147ejsn87ccbc97d54c',
+            'X-RapidAPI-Key' => 'f4cbb08322mshad99381e4685b34p192b75jsn11e0e8f31817',
         ])->get('https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v3/get-chart', [
             'interval' => $interval,
             'symbol' => $symbol,
             'range' => $range,
-
         ]);
 
-        $data = $response->json();
+        // $responseProfil = Http::withHeaders([
+        //     'X-RapidAPI-Host' => 'apidojo-yahoo-finance-v1.p.rapidapi.com',
+        //     'X-RapidAPI-Key' => 'f4cbb08322mshad99381e4685b34p192b75jsn11e0e8f31817',
+        // ])->get('https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v3/get-profile', [
+        //     'symbol' => $symbol,
+        // ]);
 
-        return view('backend.layouts.cari-saham', compact('data'));
+        // $dataProfil = $responseProfil->json();
+        $data = $responseChart->json();
+
+        return view('backend.layouts.cari-saham', compact('data',
+            // 'dataProfil'
+        ));
 
     }
 

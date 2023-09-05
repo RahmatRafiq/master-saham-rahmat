@@ -177,7 +177,7 @@
                                     Harga Buka Hari Ini = Rp {{ $hasil->high }}
                                     <br>
                                     <br>
-                                    Waktu : {{ $hasil->created_at }}
+                                    Waktu : {{ $hasil->created_at->timezone('Asia/Singapore')->format('Y-m-d H:i:s') }}
                                 </p>
                             </td>
                             <td>

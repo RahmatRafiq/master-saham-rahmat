@@ -45,6 +45,27 @@
                 </span>
             </li>
         </ul>
+        <ul class="box-info">
+            <a href="{{ route('Sortir-Saham') }}">
+                <li>
+                    <i class="bx bx-list-ul"></i>
+                    <span class="text">
+                        <h3>{{ $sortirData }}</h3>
+                        <p>Jumlah List Sorti Saham</p>
+                    </span>
+                </li>
+            </a>
+            <a href="{{ route('Sortir-Saham') }}">
+                <li>
+                    <i class="bx bx-sort"></i>
+                    <span class="text">
+                        <h3>{{ $hasilSortir }}</h3>
+                        <p>List Saham yang tersortir</p>
+                    </span>
+                </li>
+            </a>
+        </ul>
+
         <div class="table-data">
             <div class="order">
                 <div class="head">
@@ -84,6 +105,7 @@
         </div>
         <div class="todo">
             <div class="head">
+
                 <h3>Top 5 Perubahan Harga Terendah</h3>
                 <i class='bx bx-plus'></i>
                 <i class='bx bx-filter'></i>
@@ -100,7 +122,12 @@
                                 <br>
                                 {{ number_format($topLoser['percent'], 5) }} %
                             </p>
-                            <i class='bx bx-dots-vertical-rounded'></i>
+                            <div class="head-title">
+                                <a href="{{ route('Sortir Saham', ['ticker' => $topLoser['ticker']]) }}"
+                                    class="btn-download">
+                                    <i class='bx bx-add-to-queue'></i>
+                                </a>
+                            </div>
                         </li>
                     @else
                     @break

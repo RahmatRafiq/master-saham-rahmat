@@ -242,19 +242,19 @@
             });
         </script>
         <script>
-            //const axios = require('axios');
-            async function renderData() {
+            window.addEventListener('load', ()=>{
 
-
-                const options = {
-                    method: 'GET',
-                    url: 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v3/get-chart',
-                    params: {
-                        interval: '1mo',
-                        symbol: 'AMRN',
-                        range: '5y',
-                        region: 'US',
-                        includePrePost: 'false',
+                async function renderData() {
+                    
+                    const options = {
+                        method: 'GET',
+                        url: 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v3/get-chart',
+                        params: {
+                            interval: '1mo',
+                            symbol: 'AMRN',
+                            range: '5y',
+                            region: 'US',
+                            includePrePost: 'false',
                         useYfid: 'true',
                         includeAdjustedClose: 'true',
                         events: 'capitalGain,div,split'
@@ -268,17 +268,18 @@
                 try {
                     const response = await axios.request(options);
                     console.log(response.data);
-
-
+                    
+                    
                     const myElements = document.querySelector(".render_komoditas");
                     myElements.innerHTML = response.data;
                 } catch (error) {
                     console.error(error);
                 }
             }
-
+            
             renderData();
+        })
         </script>
     </main>
     <!-- MAIN -->
-</section>
+    </section>

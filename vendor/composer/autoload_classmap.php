@@ -6,10 +6,19 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Console\\Commands\\SortAndProcessStocks' => $baseDir . '/app/Console/Commands/SortAndProcessStocks.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Http\\Controllers\\Api\\ApiController' => $baseDir . '/app/Http/Controllers/Api/ApiController.php',
+    'App\\Http\\Controllers\\CariHargaController' => $baseDir . '/app/Http/Controllers/CariHargaController.php',
+    'App\\Http\\Controllers\\CariSahamController' => $baseDir . '/app/Http/Controllers/CariSahamController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
+    'App\\Http\\Controllers\\DaftarKomoditasKontroller' => $baseDir . '/app/Http/Controllers/DaftarKomoditasKontroller.php',
     'App\\Http\\Controllers\\DashboardController' => $baseDir . '/app/Http/Controllers/DashboardController.php',
+    'App\\Http\\Controllers\\DetailSahamController' => $baseDir . '/app/Http/Controllers/DetailSahamController.php',
+    'App\\Http\\Controllers\\HistoriSahamController' => $baseDir . '/app/Http/Controllers/HistoriSahamController.php',
+    'App\\Http\\Controllers\\SimulasiController' => $baseDir . '/app/Http/Controllers/SimulasiController.php',
+    'App\\Http\\Controllers\\SortirController' => $baseDir . '/app/Http/Controllers/SortirController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
     'App\\Http\\Middleware\\EncryptCookies' => $baseDir . '/app/Http/Middleware/EncryptCookies.php',
@@ -20,6 +29,8 @@ return array(
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\ValidateSignature' => $baseDir . '/app/Http/Middleware/ValidateSignature.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
+    'App\\Models\\HasilSortir' => $baseDir . '/app/Models/HasilSortir.php',
+    'App\\Models\\Sortir' => $baseDir . '/app/Models/Sortir.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',

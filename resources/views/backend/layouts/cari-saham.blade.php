@@ -3,6 +3,7 @@
 
 <!-- HEAD -->
 @include('backend.includes.head')
+@vite(['resources/js/app.js'])
 <!--HEAD-->
 
 <body>

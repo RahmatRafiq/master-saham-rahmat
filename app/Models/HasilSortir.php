@@ -16,5 +16,9 @@ class HasilSortir extends Model
         'high',
         'low',
         'close',
+        'y_open',
+        'y_high',
+        'y_low',
+        'y_close',
     ];
 }

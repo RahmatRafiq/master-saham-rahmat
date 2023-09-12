@@ -133,29 +133,60 @@
                     <i class='bx bx-filter'></i>
                 </div>
                 <ul class="todo-list">
-                    @foreach ($sortirData as $dataSortir)
-                        <li class="not-completed">
-                            <td>
-                                <p><strong>
-                                        {{ $dataSortir->symbol }}
-                                    </strong>
-                                    <br>
-                                    Harga Buka = Rp {{ $dataSortir->open }}
-                                    <br>
-                                    harga Terendah = Rp {{ $dataSortir->low }}
-                                    <br>
-                                    <br>
-                                    Waktu : {{ $dataSortir->date }}
-                                </p>
-                            </td>
-                            <td>
-                                <a
-                                    href="{{ route('sortir-saham.destroy', ['id' => $dataSortir->id]) }}"data-id="{{ $dataSortir->id }}">
-                                    <i class='bx bxs-trash' style='font-size: 30px; color: #342e37;'></i>
-                                </a>
-                            </td>
-                        </li>
-                    @endforeach
+                    {{-- @if (isset($sortirData) && count($sortirData) > 0)
+    @foreach ($sortirData as $dataSortir)
+        <li class="not-completed">
+            <td>
+                <p><strong>
+                    {{ $dataSortir->symbol ?? 'Data tidak tersedia' }}
+                </strong>
+                <br>
+                Harga Buka = Rp {{ $dataSortir->open ?? 'Data tidak tersedia' }}
+                <br>
+                harga Terendah = Rp {{ $dataSortir->low ?? 'Data tidak tersedia' }}
+                <br>
+                <br>
+                Waktu : {{ $dataSortir->date ?? 'Data tidak tersedia' }}
+                </p>
+            </td>
+            <td>
+                <a href="{{ route('sortir-saham.destroy', ['id' => $dataSortir->id]) }}" data-id="{{ $dataSortir->id }}">
+                    <i class='bx bxs-trash' style='font-size: 30px; color: #342e37;'></i>
+                </a>
+            </td>
+        </li>
+    @endforeach
+@else
+    <p>Tidak ada data yang ditemukan.</p>
+@endif --}}
+
+                    @if (isset($sortirData) && count($sortirData) > 0)
+                        @foreach ($sortirData as $dataSortir)
+                            <li class="not-completed">
+                                <td>
+                                    <p><strong>
+                                            {{ $dataSortir->symbol }}
+                                        </strong>
+                                        <br>
+                                        Harga Buka = Rp {{ $dataSortir?->y_open }}
+                                        <br>
+                                        harga Terendah = Rp {{ $dataSortir?->y_low }}
+                                        <br>
+                                        <br>
+                                        Waktu : {{ $dataSortir?->date }}
+                                    </p>
+                                </td>
+                                <td>
+                                    <a
+                                        href="{{ route('sortir-saham.destroy', ['id' => $dataSortir->id]) }}"data-id="{{ $dataSortir->id }}">
+                                        <i class='bx bxs-trash' style='font-size: 30px; color: #342e37;'></i>
+                                    </a>
+                                </td>
+                            </li>
+                        @endforeach
+                    @else
+                        <p>Tidak ada data yang ditemukan.</p>
+                    @endif
                 </ul>
             </div>
             <div class="todo">
@@ -169,21 +200,23 @@
                         <li class="completed">
                             <td>
                                 <p><strong>
-                                        {{ $hasil->symbol }}
+                                        {{ $hasil?->symbol }}
                                     </strong>
                                     <br>
-                                    Harga Terendah Sebelumnya = Rp {{ $hasil->open }}
+                                    Harga Terendah Sebelumnya = Rp {{ $hasil?->y_low }}
                                     <br>
-                                    Harga Buka Hari Ini = Rp {{ $hasil->high }}
+                                    Harga Buka Hari Ini = Rp {{ $hasil?->open }}
                                     <br>
                                     <br>
-                                    Waktu : {{ $hasil->created_at->timezone('Asia/Singapore')->format('Y-m-d H:i:s') }}
+                                    Waktu :
+                                    {{ $hasil?->created_at->timezone('Asia/Singapore')->format('Y-m-d H:i:s') }}
                                 </p>
                             </td>
                             <td>
-                                <a
-                                    href="{{ route('hasil-sortir.destroy', ['id' => $hasil->id]) }}"data-id="{{ $dataSortir->id }}">
-                                    <i class='bx bxs-trash' style='font-size: 30px; color: #342e37;'></i>
+
+                                <a href="{{ route('hasil-sortir.destroy', ['id' => $hasil->id]) }}"
+                                    data-id="{{ $hasil->id }}"><i class='bx bxs-trash'
+                                        style='font-size: 30px; color: #342e37;'></i>
                                 </a>
                             </td>
                         </li>

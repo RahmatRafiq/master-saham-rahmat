@@ -18,6 +18,10 @@ return new class extends Migration
             $table->decimal('high', 10, 2);
             $table->decimal('low', 10, 2);
             $table->decimal('close', 10, 2);
+            $table->decimal('y_open', 10, 2);
+            $table->decimal('y_high', 10, 2);
+            $table->decimal('y_low', 10, 2);
+            $table->decimal('y_close', 10, 2);
             $table->timestamps();
         });
 

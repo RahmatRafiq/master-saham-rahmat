@@ -699,3 +699,12 @@ body {
         top: 5%; /* Atur posisi tombol tutup pada layar yang lebih kecil */
     }
 }
+.columns {
+    display: flex; /* Menggunakan Flexbox */
+    justify-content: space-between; /* Mengatur jarak antara kolom */
+}
+
+.column {
+    flex-basis: 48%; /* Lebar masing-masing kolom */
+    margin-bottom: 10px; /* Jarak bawah antara kolom */
+}

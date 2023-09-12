@@ -13,10 +13,10 @@ class Sortir extends Model
 
     protected $fillable = [
         'symbol',
-        'open',
-        'high',
-        'low',
-        'close',
+        'y_open',
+        'y_high',
+        'y_low',
+        'y_close',
         'date',
     ];
 }

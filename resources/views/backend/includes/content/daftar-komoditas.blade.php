@@ -42,7 +42,11 @@
                         @foreach ($response as $data)
                             <tr>
                                 <td><strong>{{ $data['ticker'] }}</strong></td>
-                                <td>{{ $data['name'] }}
+                                <td>
+                                    <a
+                                        href="{{ route('cari-saham', ['symbol' => $data['ticker'] . '.JK', 'interval_option' => '5m', 'range_option' => '1d']) }}">
+                                        {{ $data['name'] }}
+                                    </a>
                                     <ul>
                                         <br>
                                         <div class="head-title">
@@ -52,7 +56,6 @@
                                                 <span class="text">Tambah ke Sortir</span>
                                             </a>
                                         </div>
-
                                     </ul>
                                 </td>
                                 <td>
@@ -77,3 +80,4 @@
     </main>
     <!-- MAIN -->
 </section>
+<script></script>

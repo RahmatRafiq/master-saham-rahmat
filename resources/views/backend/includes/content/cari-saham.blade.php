@@ -68,8 +68,8 @@
                             <button type="submit" class="search-btn">Cari</button>
                         </div>
                     </form>
-                    <div id="chart"></div>
-                    {{-- <div>
+                    <div id="chart" class="render_komoditas"></div>
+                    <div>
                         @if (isset($data['chart']['result'][0]['meta']))
                             <div class="todo">
                                 <div class="head">
@@ -136,39 +136,58 @@
                                     </li>
                                 </ul>
                         @endif
-                    </div> --}}
+                    </div>
+                </div>
+                <div>
                     <div>
-                        {{-- <div>
-                            @if (isset($data['chart']['result'][0]['meta']['symbol']))
-                                @php
-                                    $tickerWithoutSuffix = str_replace('.JK', '', $data['chart']['result'][0]['meta']['symbol']);
-                                @endphp
-                                <a href="{{ route('Sortir Saham', ['ticker' => $tickerWithoutSuffix]) }}"
-                                    class="btn-add">
-                                    <i class="bx bx-plus"></i>
-                                    <span class="text">Tambah Kesortir</span>
-                                </a>
+                        @if (isset($data['chart']['result'][0]['meta']['symbol']))
+                            @php
+                                $tickerWithoutSuffix = str_replace('.JK', '', $data['chart']['result'][0]['meta']['symbol']);
+                            @endphp
+                            <a href="{{ route('Sortir Saham', ['ticker' => $tickerWithoutSuffix]) }}" class="btn-add">
+                                <i class="bx bx-plus"></i>
+                                <span class="text">Tambah Kesortir</span>
+                            </a>
+                        @endif
+                    </div>
+                    <div class="columns">
+                        <div class="column">
+                            @if (isset($dataProfil['quoteSummary']['result'][0]['summaryProfile']))
+                                <h3>Profil Perusahaan ASD</h3>
+                                <ul>
+                                    <li>{{ $dataProfil['quoteSummary']['result'][0]['summaryProfile']['address1'] }}
+                                    </li>
+                                    <li>{{ $dataProfil['quoteSummary']['result'][0]['summaryProfile']['city'] }}
+                                    </li>
+                                    <li>{{ $dataProfil['quoteSummary']['result'][0]['summaryProfile']['zip'] }}
+                                    </li>
+                                    <li>{{ $dataProfil['quoteSummary']['result'][0]['summaryProfile']['country'] }}
+                                    </li>
+                                    <li>{{ $dataProfil['quoteSummary']['result'][0]['summaryProfile']['phone'] }}
+                                    </li>
+                                    <li>{{ $dataProfil['quoteSummary']['result'][0]['summaryProfile']['fax'] }}
+                                    </li>
+                                    <li>{{ $dataProfil['quoteSummary']['result'][0]['summaryProfile']['website'] }}
+                                    </li>
+                                </ul>
+                        </div>
+                        <div class="column">
+                            <ul>
+                                <li>{{ $dataProfil['quoteSummary']['result'][0]['summaryProfile']['industry'] }}
+                                </li>
+                                <li>{{ $dataProfil['quoteSummary']['result'][0]['summaryProfile']['industryDisp'] }}
+                                </li>
+                                <li>{{ $dataProfil['quoteSummary']['result'][0]['summaryProfile']['sector'] }}</li>
+                                <li>{{ $dataProfil['quoteSummary']['result'][0]['summaryProfile']['sectorDisp'] }}
+                                </li>
+                                <li>{{ $dataProfil['quoteSummary']['result'][0]['summaryProfile']['longBusinessSummary'] }}
+                                </li>
+                                <li>{{ $dataProfil['quoteSummary']['result'][0]['summaryProfile']['fullTimeEmployees'] }}
+                                </li>
+                                <li>{{ $dataProfil['quoteSummary']['result'][0]['summaryProfile']['maxAge'] }}</li>
+                            </ul>
                             @endif
                         </div>
-                        <div>
-                            @if (isset($dataProfil['quoteSummary']['result'][0]['summaryProfile']))
-                                {{ $dataProfil['quoteSummary']['result'][0]['summaryProfile']['address1'] }}
-                                {{ $dataProfil['quoteSummary']['result'][0]['summaryProfile']['address2'] }}
-                                {{ $dataProfil['quoteSummary']['result'][0]['summaryProfile']['city'] }}
-                                {{ $dataProfil['quoteSummary']['result'][0]['summaryProfile']['zip'] }}
-                                {{ $dataProfil['quoteSummary']['result'][0]['summaryProfile']['country'] }}
-                                {{ $dataProfil['quoteSummary']['result'][0]['summaryProfile']['phone'] }}
-                                {{ $dataProfil['quoteSummary']['result'][0]['summaryProfile']['fax'] }}
-                                {{ $dataProfil['quoteSummary']['result'][0]['summaryProfile']['website'] }}
-                                {{ $dataProfil['quoteSummary']['result'][0]['summaryProfile']['industry'] }}
-                                {{ $dataProfil['quoteSummary']['result'][0]['summaryProfile']['industryDisp'] }}
-                                {{ $dataProfil['quoteSummary']['result'][0]['summaryProfile']['sector'] }}
-                                {{ $dataProfil['quoteSummary']['result'][0]['summaryProfile']['sectorDisp'] }}
-                                {{ $dataProfil['quoteSummary']['result'][0]['summaryProfile']['longBusinessSummary'] }}
-                                {{ $dataProfil['quoteSummary']['result'][0]['summaryProfile']['fullTimeEmployees'] }}
-                                {{ $dataProfil['quoteSummary']['result'][0]['summaryProfile']['maxAge'] }}
-                            @endif
-                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -222,7 +241,44 @@
                 @endif
             });
         </script>
+        <script>
+            //const axios = require('axios');
+            async function renderData() {
 
+
+                const options = {
+                    method: 'GET',
+                    url: 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v3/get-chart',
+                    params: {
+                        interval: '1mo',
+                        symbol: 'AMRN',
+                        range: '5y',
+                        region: 'US',
+                        includePrePost: 'false',
+                        useYfid: 'true',
+                        includeAdjustedClose: 'true',
+                        events: 'capitalGain,div,split'
+                    },
+                    headers: {
+                        'X-RapidAPI-Key': 'eb1843a911mshe0757ccb1c4961ep18d1ccjsn9c6d2b5d4682',
+                        'X-RapidAPI-Host': 'apidojo-yahoo-finance-v1.p.rapidapi.com'
+                    }
+                };
+
+                try {
+                    const response = await axios.request(options);
+                    console.log(response.data);
+
+
+                    const myElements = document.querySelector(".render_komoditas");
+                    myElements.innerHTML = response.data;
+                } catch (error) {
+                    console.error(error);
+                }
+            }
+
+            renderData();
+        </script>
     </main>
     <!-- MAIN -->
 </section>

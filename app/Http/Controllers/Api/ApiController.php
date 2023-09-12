@@ -43,7 +43,7 @@ class ApiController extends Controller
             'headers' => [
                 'accept' => 'application/json',
                 'X-RapidAPI-Host' => 'apidojo-yahoo-finance-v1.p.rapidapi.com',
-                'X-RapidAPI-Key' => 'f4cbb08322mshad99381e4685b34p192b75jsn11e0e8f31817',
+                'X-RapidAPI-Key' => 'eb1843a911mshe0757ccb1c4961ep18d1ccjsn9c6d2b5d4682',
             ],
         ]);
 

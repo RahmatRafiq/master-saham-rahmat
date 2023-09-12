@@ -271,7 +271,50 @@
                     
                     
                     const myElements = document.querySelector(".render_komoditas");
-                    myElements.innerHTML = response.data;
+                    // myElements.innerHTML = response.data;
+
+                    var candleSeries = response.data['chart']['result'][0]['indicators']['quote'][0]
+                    var timestamp = response.data['chart']['result'][0]['timestamp']
+
+                    var dataSeries = [];
+                    for (var i = 0; i < timestamp.length; i++) {
+                        var unixTimestamp = timestamp[i];
+                        var date = new Date(unixTimestamp * 1000);
+                        var formattedDate = date.toLocaleString('en-US', {
+                            month: 'short',
+                            day: 'numeric',
+                            hour: 'numeric',
+                            minute: 'numeric',
+                            timeZoneName: 'short'
+                        });
+
+                        var dataPoint = {
+                            x: formattedDate,
+                            y: [
+                                candleSeries.open[i],
+                                candleSeries.high[i],
+                                candleSeries.low[i],
+                                candleSeries.close[i]
+                            ]
+                        };
+                        dataSeries.push(dataPoint);
+                    }
+
+                    var optionsChart = {
+                    series: [],
+                    chart: {
+                        height: 500,
+                        type: 'candlestick',
+                    },
+                };
+                    optionsChart.series.push({
+                        name: 'candle',
+                        type: 'candlestick',
+                        data: dataSeries
+                    });
+
+                    var chart = new ApexCharts(document.querySelector("#chart"), optionsChart);
+                    chart.render();
                 } catch (error) {
                     console.error(error);
                 }

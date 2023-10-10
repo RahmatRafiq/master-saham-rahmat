@@ -268,7 +268,7 @@ body {
     color: var(--dark);
 }
 #content form .form-input1 .form-select {
-    width: 120px;
+    width: 100%;
     height: 100%;
     border: none;
     background: var(--blue);
@@ -707,4 +707,37 @@ body {
 .column {
     flex-basis: 48%; /* Lebar masing-masing kolom */
     margin-bottom: 10px; /* Jarak bawah antara kolom */
+}
+
+.alert {
+    padding: 20px;
+    margin: 15px;
+    border-radius: 4px;
+}
+
+.alert.success {
+    background-color: var(--green);
+    color: white;
+}
+
+.alert.error {
+    background-color: #f44336;
+    color: white;
+}
+
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 20px;
+    line-height: 10px;
+    cursor: pointer;
+    transform: scale(1); /* Efek awal */
+    transition: transform 0.2s; /* Efek transisi */
+}
+
+.closebtn:hover {
+    color: var(--red);
+    transform: scale(2);
 }

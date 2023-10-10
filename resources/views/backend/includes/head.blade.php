@@ -1,4 +1,7 @@
+<!DOCTYPE html>
+
 <head>
+    <html lang="id">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -9,3 +12,5 @@
 
     <title>Master Saham Laravel 10</title>
 </head>
+
+</html>

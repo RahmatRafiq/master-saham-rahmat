@@ -7,6 +7,8 @@ class DaftarKomoditasKontroller extends Controller
 {
     public function index()
     {
+        $start_time = microtime(true);
+
         $apiController = new ApiController();
         $response = $apiController->index();
 
@@ -23,13 +25,19 @@ class DaftarKomoditasKontroller extends Controller
                         'close' => $trending['close'],
                         'change' => $trending['change'],
                     ];
-                    // Jika ada pencocokan kode ticker, lanjut ke perusahaan berikutnya
                     break;
                 }
             }
         }
-
+        $end_time = microtime(true);
+        $execution_time = $end_time - $start_time;
         return view('backend.layouts.daftar-komoditas')
-            ->with('response', $combinedData);
+            ->with(
+                [
+                    'execution_time' => $execution_time,
+                    'response' => $combinedData,
+                ]
+            );
     }
+
 }

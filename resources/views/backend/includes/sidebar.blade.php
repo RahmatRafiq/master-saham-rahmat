@@ -16,12 +16,12 @@
                 <span class="text">Daftar Komoditas (Saham)</span>
             </a>
         </li>
-        <li class="{{ Route::currentRouteName() === 'Detail Saham' ? 'active' : '' }}">
+        {{-- <li class="{{ Route::currentRouteName() === 'Detail Saham' ? 'active' : '' }}">
             <a href="{{ route('Detail Saham') }}">
                 <i class='bx bxs-detail'></i>
                 <span class="text">Detail Saham</span>
             </a>
-        </li>
+        </li> --}}
         <li class="{{ Route::currentRouteName() === 'Cari Saham' ? 'active' : '' }}">
             <a href="{{ route('Cari Saham') }}">
                 <i class="bx bx-search-alt-2" style="font-weight: bold;"></i>
@@ -34,14 +34,14 @@
                 <span class="text">Sortir Saham</span>
             </a>
         </li>
-        <li class="{{ Route::currentRouteName() === 'Simulasi' ? 'active' : '' }}">
+        {{-- <li class="{{ Route::currentRouteName() === 'Simulasi' ? 'active' : '' }}">
             <a href="#">
                 <i class="bx bx-sitemap" style="font-weight: bold;"></i>
                 <span class="text">Simulasi</span>
             </a>
-        </li>
+        </li> --}}
     </ul>
-    <ul class="side-menu">
+    {{-- <ul class="side-menu">
         <li>
             <a href="#">
                 <i class='bx bxs-cog'></i>
@@ -54,5 +54,5 @@
                 <span class="text">Logout</span>
             </a>
         </li>
-    </ul>
+    </ul> --}}
 </section>

@@ -14,13 +14,18 @@ class CariSahamController extends Controller
 
     public function CariSaham(Request $request)
     {
+
+        $rapidApiKey = env('RAPID_API_KEY');
+
+        $start_time = microtime(true);
+
         $symbol = $request->input('symbol');
         $interval = $request->input('interval_option');
         $range = $request->input('range_option');
 
         $responseChart = Http::withHeaders([
             'X-RapidAPI-Host' => 'apidojo-yahoo-finance-v1.p.rapidapi.com',
-            'X-RapidAPI-Key' => 'eb1843a911mshe0757ccb1c4961ep18d1ccjsn9c6d2b5d4682',
+            'X-RapidAPI-Key' => $rapidApiKey,
         ])->get('https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v3/get-chart', [
             'interval' => $interval,
             'symbol' => $symbol,
@@ -29,20 +34,25 @@ class CariSahamController extends Controller
 
         $responseProfil = Http::withHeaders([
             'X-RapidAPI-Host' => 'apidojo-yahoo-finance-v1.p.rapidapi.com',
-            'X-RapidAPI-Key' => 'eb1843a911mshe0757ccb1c4961ep18d1ccjsn9c6d2b5d4682',
+            'X-RapidAPI-Key' => $rapidApiKey,
         ])->get('https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v3/get-profile', [
             'symbol' => $symbol,
         ]);
+
+        $end_time = microtime(true);
+        $execution_time = $end_time - $start_time;
 
         $dataProfil = $responseProfil->json();
         $data = $responseChart->json();
 
         return view('backend.layouts.cari-saham',
             [
+                'execution_time' => $execution_time,
                 'data' => $data,
                 'dataProfil' => $dataProfil,
             ]
         );
+
     }
 
 }

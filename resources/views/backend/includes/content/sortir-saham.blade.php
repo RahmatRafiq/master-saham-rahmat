@@ -113,7 +113,7 @@
                     </li>
                     <li><i class='bx bx-chevron-right'></i></li>
                     <li>
-                        <a class="active" href="#">Home</a>
+                        <a class="active" href="#">Sortir Saham</a>
                     </li>
                 </ul>
             </div>
@@ -129,37 +129,10 @@
             <div class="todo">
                 <div class="head">
                     <h3>List Sortir</h3>
-                    <i class='bx bx-plus'></i>
-                    <i class='bx bx-filter'></i>
+                    {{-- <i class='bx bx-plus'></i>
+                    <i class='bx bx-filter'></i> --}}
                 </div>
                 <ul class="todo-list">
-                    {{-- @if (isset($sortirData) && count($sortirData) > 0)
-    @foreach ($sortirData as $dataSortir)
-        <li class="not-completed">
-            <td>
-                <p><strong>
-                    {{ $dataSortir->symbol ?? 'Data tidak tersedia' }}
-                </strong>
-                <br>
-                Harga Buka = Rp {{ $dataSortir->open ?? 'Data tidak tersedia' }}
-                <br>
-                harga Terendah = Rp {{ $dataSortir->low ?? 'Data tidak tersedia' }}
-                <br>
-                <br>
-                Waktu : {{ $dataSortir->date ?? 'Data tidak tersedia' }}
-                </p>
-            </td>
-            <td>
-                <a href="{{ route('sortir-saham.destroy', ['id' => $dataSortir->id]) }}" data-id="{{ $dataSortir->id }}">
-                    <i class='bx bxs-trash' style='font-size: 30px; color: #342e37;'></i>
-                </a>
-            </td>
-        </li>
-    @endforeach
-@else
-    <p>Tidak ada data yang ditemukan.</p>
-@endif --}}
-
                     @if (isset($sortirData) && count($sortirData) > 0)
                         @foreach ($sortirData as $dataSortir)
                             <li class="not-completed">
@@ -192,8 +165,8 @@
             <div class="todo">
                 <div class="head">
                     <h3>Saham Tersortir</h3>
-                    <i class='bx bx-plus'></i>
-                    <i class='bx bx-filter'></i>
+                    {{-- <i class='bx bx-plus'></i>
+                    <i class='bx bx-filter'></i> --}}
                 </div>
                 <ul class="todo-list">
                     @foreach ($hasilSortir as $hasil)

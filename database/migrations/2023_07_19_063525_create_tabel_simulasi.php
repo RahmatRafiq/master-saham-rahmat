@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('tabel_simulasi', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->string('endpoint');
-            $table->integer('execution_count')->default(0);
+            $table->string('symbol');
+            $table->decimal('y_open', 10, 2);
+            $table->decimal('y_high', 10, 2);
+            $table->decimal('y_low', 10, 2);
+            $table->decimal('y_close', 10, 2);
+            $table->date('date');
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users');
-
         });
     }
 

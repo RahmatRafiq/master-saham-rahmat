@@ -9,12 +9,21 @@ use Illuminate\Support\Facades\Log;
 
 class SortirController extends Controller
 {
+    private $rapidApiKey;
+    private $goapiKey;
+
+    public function __construct()
+    {
+        $this->rapidApiKey = env('RAPID_API_KEY');
+        $this->goapiKey = env('GOAPI_API_KEY');
+
+    }
 
     public function index()
     {
         $sortirData = Sortir::orderBy('created_at', 'desc')->paginate(25);
         $hasilSortir = HasilSortir::orderBy('created_at', 'asc')->paginate(25);
-        return view('backend.layouts.sortir-saham ',
+        return view('backend.layouts.sortir-saham',
             [
                 'sortirData' => $sortirData,
                 'hasilSortir' => $hasilSortir,
@@ -25,14 +34,16 @@ class SortirController extends Controller
 
     public function sortirSaham($ticker)
     {
-        $apiKey = 'x9XNlAlZiYCFlPv8T5glLRgvkF71ln';
+        $start_time = microtime(true);
+
+        $apiKey = $this->goapiKey;
         $response = Http::get("https://api.goapi.id/v1/stock/idx/prices?symbols=$ticker&api_key=$apiKey");
         $data = $response->json();
 
         if (isset($data['data']['results'][0])) {
             $stockData = $data['data']['results'][0];
 
-            $symbol = $stockData['symbol'] . '.JK';
+            $ticker = $stockData['ticker'] . '.JK';
             $y_open = $stockData['open'];
             $y_high = $stockData['high'];
             $y_low = $stockData['low'];
@@ -40,7 +51,7 @@ class SortirController extends Controller
             $date = $stockData['date'];
 
             Sortir::create([
-                'symbol' => $symbol,
+                'symbol' => $ticker,
                 'y_open' => $y_open,
                 'y_high' => $y_high,
                 'y_low' => $y_low,
@@ -48,7 +59,9 @@ class SortirController extends Controller
                 'date' => $date,
             ]);
 
-            return redirect()->back()->with('success', 'Ticker berhasil ditambahkan ke dalam sortir saham.');
+            $successAlert = "kode saham $ticker  berhasil ditambahkan ke dalam sortir saham diharga Rp.$y_low";
+
+            return redirect()->back()->with('success', $successAlert);
         } else {
             return redirect()->back()->with('error', 'Ticker tidak valid atau tidak dapat ditemukan.');
         }
@@ -65,8 +78,6 @@ class SortirController extends Controller
     {
         $sortirData = Sortir::get();
 
-        $apiKey = 'eb1843a911mshe0757ccb1c4961ep18d1ccjsn9c6d2b5d4682';
-
         foreach ($sortirData as $data) {
             $symbol = $data->symbol;
             $y_close = $data->y_close;
@@ -76,7 +87,7 @@ class SortirController extends Controller
 
             $response = Http::withHeaders([
                 'X-RapidAPI-Host' => 'apidojo-yahoo-finance-v1.p.rapidapi.com',
-                'X-RapidAPI-Key' => $apiKey,
+                'X-RapidAPI-Key' => $this->rapidApiKey,
             ])->get('https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v3/get-chart', [
                 'interval' => '1d',
                 'symbol' => $symbol,

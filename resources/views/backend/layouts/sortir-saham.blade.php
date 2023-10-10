@@ -11,7 +11,8 @@
     <!-- SIDEBAR -->
 
     <!-- CONTENT -->
-    @include('backend.includes.content.sortir-saham')
+    {{-- @include('backend.includes.content.sortir-saham') --}}
+    @include('backend.includes.content.error')
     <!-- CONTENT -->
 
     <!-- JS -->
